@@ -99,8 +99,8 @@ const ProductDetail = ({ data }) => {
                     <p>{data.chemical_name}</p>
                   </div>
                   {/* Basic Details */}
-                  <div className="flex flex-col gap-5">
-                    <h4 className="text-[18px] font-semibold mb-2 w-40 ">
+                  <div className="flex flex-col gap-2">
+                    <h4 className="text-[18px] font-semibold  w-40 ">
                       Basic Details
                     </h4>
                     <div className="flex flex-col gap-2">
@@ -114,7 +114,7 @@ const ProductDetail = ({ data }) => {
                   </div>
                   {/* Identification */}
                   <div className="flex flex-col gap-2">
-                    <h4 className="text-[18px] font-semibold mb-2 w-40 ">
+                    <h4 className="text-[18px] font-semibold  w-40 ">
                       Identification
                     </h4>
                     <div className="flex flex-col gap-2">
@@ -128,7 +128,7 @@ const ProductDetail = ({ data }) => {
                   </div>
                   {/* features  */}
                   <div className="flex flex-col gap-2">
-                    <h4 className="font-semibold text-[18px] mb-2 w-40">
+                    <h4 className="font-semibold text-[18px]  w-40">
                       Features
                     </h4>
                     <div className="flex flex-col gap-2">

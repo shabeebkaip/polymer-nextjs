@@ -25,11 +25,6 @@ const Navbar = () => {
     <nav className="top-0 z-50 ">
       <div
         className="w-full px-3 py-2 bg-[#0D47A1] "
-        // style={{
-        //   backgroundImage: `linear-gradient(to bottom, rgba(25, 81, 133, 0.5), rgba(0,0,0,0.7)),url('/chem.jpg')`,
-        //   backgroundSize: "cover",
-        //   backgroundPosition: "center",
-        // }}
       >
         <div className="flex items-center justify-between grid-cols-10 gap-2 md:justify-center md:grid">
           <div className="col-span-2">
