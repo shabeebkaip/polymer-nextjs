@@ -1,10 +1,14 @@
+import Image from "next/image";
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const MobileCard = ({ subCategory }) => {
   const [visible, setVisible] = useState(false);
+  const router = useRouter();
 
   const handleClick = () => {
     console.log(`Clicked on ${subCategory.title}`);
+    router.push(`/product-list?category=${subCategory.name}`);
   };
 
   return (
@@ -23,10 +27,16 @@ const MobileCard = ({ subCategory }) => {
       </div>
       <div>
         <div className="mb-3 text-primary hover:text-teal-500">
-          {subCategory.icon}
+          <Image
+            src={subCategory?.icon}
+            alt={subCategory?.name}
+            width={1000}
+            height={1000}
+            className="object-cover w-6 h-6"
+          />
         </div>
         <p className="text-sm font-medium text-primary hover:text-teal-500">
-          {subCategory.title}
+          {subCategory?.name}
         </p>
       </div>
     </div>

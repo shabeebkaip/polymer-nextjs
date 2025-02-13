@@ -4,6 +4,7 @@ import ProductDetailList from "./contains/ProductDetailList";
 const fetchProductDetail = async (id) => {
   const response = await fetch(
     `https://polymer-nodejs.vercel.app/api/product/${id}`,
+
     { cache: "no-store" }
   );
   return response.json();

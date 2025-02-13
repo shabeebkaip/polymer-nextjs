@@ -1,123 +1,84 @@
-'use client'
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
+"use client";
+import React from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { useInView } from "react-intersection-observer";
 
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-
-const brandsData = [
-    {
-        id: 1,
-        name: 'Nouryon',
-        imageUrl: '/clentlogo1.png',
-        category: 'Specialty Chemicals',
-    },
-    {
-        id: 2,
-        name: 'Ingredion',
-        imageUrl: '/clentlogo.png',
-        category: 'Food Ingredients',
-    },
-    {
-        id: 3,
-        name: 'Braskem',
-        imageUrl: '/clentlogo1.png',
-        category: 'Petrochemicals',
-    },
-    {
-        id: 4,
-        name: 'ADM',
-        imageUrl: '/clentlogo.png',
-        category: 'Agricultural Processing',
-    },
-    {
-        id: 5,
-        name: 'Mitsubishi Chemical',
-        imageUrl: '/clentlogo1.png',
-        category: 'Chemical Manufacturing',
-    },
-    {
-        id: 6,
-        name: 'P&G',
-        imageUrl: '/clentlogo.png',
-        category: 'Consumer Goods',
-    },
-    {
-        id: 7,
-        name: 'Nouryon',
-        imageUrl: '/clentlogo.png',
-        category: 'Specialty Chemicals',
-    },
-    {
-        id: 8,
-        name: 'Ingredion',
-        imageUrl: '/clentlogo.png',
-        category: 'Food Ingredients',
-    },
-    {
-        id: 9,
-        name: 'Braskem',
-        imageUrl: '/clentlogo.png',
-        category: 'Petrochemicals',
-    },
-    {
-        id: 10,
-        name: 'ADM',
-        imageUrl: '/clentlogo.png',
-        category: 'Agricultural Processing',
-    },
-    {
-        id: 14,
-        name: 'Mitsubishi Chemical',
-        imageUrl: '/clentlogo.png',
-        category: 'Chemical Manufacturing',
-    },
-    {
-        id: 15,
-        name: 'P&G',
-        imageUrl: '/clentlogo.png',
-        category: 'Consumer Goods',
-    },
+const clients = [
+  "/clients/lubrizol_logo.webp",
+  "/clients/jj.webp",
+  "/clients/03-Givaudan-logo.webp",
+  "/clients/evonik.webp",
+  "/clients/05-Unilever-logo.webp",
+  "/clients/Homepage_TrustedBy_Advansix.webp",
+  "/clients/07-PPG-logo.webp",
+  "/clients/TrustedBy_Bunge.webp",
+  "/clients/Homepage_SabicLogo.webp",
+  "/clients/10-Nouryon-logo.webp",
+  "/clients/ingredion.webp",
+  "/clients/12-Braskem-logo.webp",
+  "/clients/adm.webp",
+  "/clients/14-MitsubishiChem-logo.webp",
+  "/clients/15_PG_Logo.webp",
 ];
 
 const Brands = () => {
-    return (
-        <div className="relative py-20 ">
-        
-            <div className="text-[40px]  pb-6 flex justify-center container  mx-auto px-6 ">
-                <h6 className="xl:w-[50%] w-full font-medium text-left  lg:text-center">Trusted by the World's Top Customers & Suppliers</h6>
-            </div>
-            <Swiper
-                modules={[Navigation, Pagination, Autoplay]}
-                slidesPerView={2}
-                spaceBetween={20}
-                style={{ paddingBottom: "60px" }}
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
 
-                pagination={{ clickable: true }}
-                autoplay={{ delay: 3000, disableOnInteraction: false }}
-                breakpoints={{
-                    640: { slidesPerView: 5, spaceBetween: 20 },
-                    768: { slidesPerView: 8, spaceBetween: 30 },
-                    1024: { slidesPerView: 10, spaceBetween: 40 },
-                }}
-                className="mySwiper"
+  return (
+    <motion.div
+      ref={ref}
+      className="container flex px-6 mx-auto"
+      initial={{ opacity: 0 }}
+      animate={inView ? { opacity: 1 } : { opacity: 0 }}
+      transition={{ duration: 1 }}
+    >
+      <motion.div
+        className="grid items-center grid-cols-1 py-20 lg:grid-cols-2"
+        initial={{ y: 50, opacity: 0 }}
+        animate={inView ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+      >
+        <motion.div
+          initial={{ x: -30, opacity: 0 }}
+          animate={inView ? { x: 0, opacity: 1 } : { x: -30, opacity: 0 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+          className="mb-6"
+        >
+          <h3 className="text-xl font-semibold leading-tight md:text-3xl text-primary">
+            Trusted by the World's Top{" "}
+            <span className="text-[#0D47A1]">Customers & Suppliers</span>
+          </h3>
+        </motion.div>
+
+        <motion.div
+          className="grid items-center grid-cols-2 gap-5 md:flex md:flex-row md:flex-wrap"
+          initial={{ y: 30, opacity: 0 }}
+          animate={inView ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+        >
+          {clients.map((img, index) => (
+            <motion.div
+              key={index}
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={
+                inView ? { scale: 1, opacity: 1 } : { scale: 0.8, opacity: 0 }
+              }
+              transition={{ delay: index * 0.1, duration: 0.5 }}
             >
-                {brandsData.map((brand, index) => (
-                    <SwiperSlide key={index} className="flex items-center justify-center">
-                       <div className="w-[200px]">
-                        <img
-                            src={brand.imageUrl}
-                            alt={brand.name}
-                            className="w-full "
-                        />
-                       </div>
-                    </SwiperSlide>
-                ))}
-            </Swiper>
-        </div>
-    );
+              <Image
+                src={img}
+                alt="client"
+                width={1000}
+                height={1000}
+                className="w-32 object-fit"
+              />
+            </motion.div>
+          ))}
+        </motion.div>
+      </motion.div>
+    </motion.div>
+  );
 };
 
 export default Brands;

@@ -13,13 +13,16 @@ module.exports = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        primary: "#222c2e",
+        primary: "#0D47A1",
+        secondary: "#384e5b",
       },
       fontFamily: {
         montserrat: ["Montserrat", "sans-serif"],
       },
       fontSize: {
         "12px": "12px",
+        "13px": "13px",
+        "14px": "14px",
       },
     },
   },

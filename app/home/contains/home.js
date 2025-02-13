@@ -40,8 +40,8 @@ const Mainhome = async () => {
         subCategories={subCategories || []}
         categories={result?.data || []}
       />
-      <About />
       <Brands />
+      <About />
       <WhyChemistry />
       <Testimonial />
     </>

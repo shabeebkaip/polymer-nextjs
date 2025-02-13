@@ -16,7 +16,7 @@ const ProductList = ({ data }) => {
 
           <div className="flex flex-col col-span-12 gap-5 md:col-span-10">
             <SortComponent />
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
               {data?.list?.map((product, index) => (
                 <ProductCard product={product} key={index} />
               ))}

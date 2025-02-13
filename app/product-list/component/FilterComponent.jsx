@@ -66,7 +66,7 @@ const FilterContent = ({ filters }) => {
       <div className="space-y-3">
         <h4 className="font-medium text-gray-700">Brands</h4>
         <div className="space-y-2">
-          {filters?.brands?.map((brand) => (
+          {filters?.brands?.map((brand, index) => (
             <label
               key={brand?.name}
               className="flex items-center gap-2 cursor-pointer group"

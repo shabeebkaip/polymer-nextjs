@@ -1,66 +1,86 @@
+"use client";
 import React from "react";
-import Brands from "./Brands";
+import { useInView } from "react-intersection-observer";
+import Image from "next/image";
+import { motion } from "framer-motion";
 
-const FeatureCard = ({ icon, title, description }) => (
-  <div className="flex flex-col space-y-2">
-    <div className="w-8 h-8 mb-2 text-[#0D47A1] xl:h-12 xl:w-12">{icon}</div>
-    <h3 className="text-lg font-medium text-gray-900">{title}</h3>
-    <p className="text-gray-600">{description}</p>
-  </div>
-);
+const Card = ({ subCategory, onHover, handleClick }) => {
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.3 }}
+      whileHover={{ scale: 1.05 }}
+      onMouseEnter={() => onHover(subCategory.image)}
+      onMouseLeave={() => onHover("/svgimage.svg")}
+      className="rounded-[25px] hover:bg-white shadow-md h-32 cursor-pointer flex flex-col items-start justify-between p-3 bg-white/30 backdrop-blur-lg border border-white/30 hover:text-[#0D47A1] transition-all duration-300 transform hover:border-[#0D47A1] hover:shadow-lg"
+      onClick={() => handleClick(subCategory)}
+    >
+      <div className="flex justify-end w-full">
+        <p className="transition-opacity opacity-0 group-hover:opacity-100">
+          Explore More {">"}
+        </p>
+      </div>
+      <div>
+        <Image
+          src={subCategory.icon}
+          alt={subCategory.title || subCategory.name}
+          width={1000}
+          height={1000}
+          className="object-cover w-6 h-6"
+        />
+        <p className="text-sm font-medium text-primary hover:text-teal-500">
+          {subCategory.name}
+        </p>
+      </div>
+    </motion.div>
+  );
+};
+
+const FeatureCard = ({ icon, title, description }) => {
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5 }}
+      className="flex flex-col p-2 space-y-2 rounded-lg"
+    >
+      <Image
+        src={icon}
+        alt={title}
+        width={1000}
+        height={1000}
+        className="object-contain w-10"
+      />
+
+      <h3 className="text-lg font-medium text-gray-900">{title}</h3>
+      <p className="text-gray-600">{description}</p>
+    </motion.div>
+  );
+};
 
 const About = () => {
   const features = [
     {
-      icon: (
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          className="w-full h-full"
-        >
-          <rect x="3" y="3" width="18" height="18" rx="2" strokeWidth="2" />
-          <line x1="3" y1="9" x2="21" y2="9" strokeWidth="2" />
-          <line x1="9" y1="21" x2="9" y2="9" strokeWidth="2" />
-        </svg>
-      ),
+      icon: "/why-polymer/01-v1.webp",
       title: "Instant access to the most comprehensive product catalog",
       description:
         "Browse, search and filter the world's largest catalog of chemicals, ingredients and polymers.",
     },
     {
-      icon: (
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          className="w-full h-full"
-        >
-          <path
-            d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
-            strokeWidth="2"
-          />
-        </svg>
-      ),
+      icon: "/why-polymer/02-v2.webp",
       title: "Talk directly to suppliers' experts",
       description:
         "Ask technical product questions, talk to a sales rep and inquire about pricing.",
     },
     {
-      icon: (
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          className="w-full h-full"
-        >
-          <path
-            d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"
-            strokeWidth="2"
-          />
-          <path d="M18 2l4 4-10 10H8v-4L18 2z" strokeWidth="2" />
-        </svg>
-      ),
+      icon: "/why-polymer/03-v3.webp",
       title: "Order samples, request documents, and get quotes",
       description:
         "Knowde concierge will handle all the details and ensure your requests are handled faster than ever.",
@@ -68,25 +88,26 @@ const About = () => {
   ];
 
   return (
-    <div className="container flex px-6 mx-auto ">
-      <div className="grid items-center grid-cols-1 gap-4 py-20 lg:grid-cols-2 ">
-        <div className="">
-          <h2 className="font-bold text-[#0D47A1]">Why Polymer</h2>
-          <h3 className="text-2xl font-semibold leading-tight xl:text-4xl text-primary">
-            Interact with over 8,000 suppliers, browse their catalogs, access
-            documents and download starter formulations.
-          </h3>
-        </div>
-
-        <div className="flex flex-col gap-5 ">
-          {features.map((feature, index) => (
-            <FeatureCard
-              key={index}
-              icon={feature.icon}
-              title={feature.title}
-              description={feature.description}
-            />
-          ))}
+    <div className="flex px-6">
+      <div className="container mx-auto">
+        <div className="grid items-center grid-cols-1 gap-10 py-5 md:py-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="md:w-3/5"
+          >
+            <h2 className="font-bold text-[#0D47A1]">Why Polymer</h2>
+            <h3 className="text-xl font-semibold leading-tight xl:text-3xl text-secondary">
+              Interact with over 8,000 suppliers, browse their catalogs, access
+              documents and download starter formulations.
+            </h3>
+          </motion.div>
+          <div className="flex flex-col gap-5 md:flex-row">
+            {features.map((feature, index) => (
+              <FeatureCard key={index} {...feature} />
+            ))}
+          </div>
         </div>
       </div>
     </div>

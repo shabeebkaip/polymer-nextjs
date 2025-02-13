@@ -1,12 +1,12 @@
-import React from 'react'
-import LoginForm from '../component/LoginForm'
+import React from "react";
+import LoginForm from "../component/LoginForm";
 
-const Login = () => {
+const Login = ({ visible, onClose }) => {
   return (
     <div>
-        <LoginForm/>
+      <LoginForm />
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

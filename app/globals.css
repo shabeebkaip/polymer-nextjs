@@ -6,7 +6,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap');
 
 body {
-  background: #fbfbfb;
+  background: #f8fafc;
+}
+
+@layer base {
+  * {
+    font-family: "Montserrat", sans-serif !important;
+  }
 }
 
 .swiper-pagination-bullet-active {

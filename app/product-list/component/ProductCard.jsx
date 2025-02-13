@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
+import { motion } from "framer-motion";
 
 const ProductCard = ({ product }) => {
   const router = useRouter();
@@ -19,22 +20,22 @@ const ProductCard = ({ product }) => {
         </div>
         <div className="flex flex-col gap-1 p-3">
           <h4 className="font-semibold">{product?.name}</h4>
-          <div className="">
+          <div>
             <span className="font-semibold">Brand:</span>
             <span className="ml-1">{product.brand}</span>
           </div>
-          <div className="">
+          <div>
             <span className="font-semibold">Chemical Name:</span>
             <span className="ml-1">{product.chemical_name}</span>
           </div>
           {product?.basic_details?.map((detail, index) => (
-            <div key={index} className="">
+            <div key={index}>
               <span className="font-semibold">{detail.title} :</span>
               <span className="ml-1">{detail.value}</span>
             </div>
           ))}
           {product?.identification?.map((detail, index) => (
-            <div key={index} className="">
+            <div key={index}>
               <span className="font-semibold">{detail.title}:</span>
               <span className="ml-1">{detail.value}</span>
             </div>
@@ -43,7 +44,7 @@ const ProductCard = ({ product }) => {
             {product?.labelingClaims?.length > 0 && (
               <div>
                 <span className="block mb-1 font-medium">Labeling Claims:</span>
-                <div className="flex items-baseline gap-1 ">
+                <div className="flex items-baseline gap-1">
                   {product.labelingClaims.map((claim) => (
                     <span
                       key={claim}
@@ -74,12 +75,14 @@ const ProductCard = ({ product }) => {
         </div>
       </div>
       <div className="flex justify-end p-3 bg-gray-50">
-        <button
-          className="w-full px-4 py-2 text-white transition-colors bg-teal-600 rounded-md hover:bg-teal-600"
+        <motion.button
+          whileHover={{ boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.1)" }}
+          whileTap={{ scale: 0.95 }}
+          className="w-full px-4 py-2 text-white transition-colors rounded-md bg-primary"
           onClick={() => router.push(`/product-list/${product._id}`)}
         >
           View Product
-        </button>
+        </motion.button>
       </div>
     </div>
   );
