@@ -25,7 +25,7 @@ const Navbar = () => {
   return (
     <nav className="top-0 z-50 ">
       <div className="w-full px-3 py-2 bg-[#0D47A1]">
-        <div className="flex items-center justify-between grid-cols-10 gap-2 md:justify-center md:grid">
+        <div className="flex items-center justify-between grid-cols-12 gap-2 md:justify-center md:grid">
           <div className="col-span-2">
             <h2
               className="text-lg font-bold text-white cursor-pointer text-md"
@@ -35,7 +35,7 @@ const Navbar = () => {
             </h2>
           </div>
 
-          <div className="relative items-center hidden col-span-6 md:flex">
+          <div className="relative items-center hidden col-span-8 md:flex">
             <input
               type="text"
               placeholder="Search through 8,000+ Supplier owned storefronts"
@@ -46,7 +46,7 @@ const Navbar = () => {
             </div>
           </div>
           <div className="items-center justify-end hidden col-span-2 gap-5 md:flex text-[13px] font-bold">
-            <ShoppingCart className="w-5 h-5 text-white cursor-pointer" />
+            {/* <ShoppingCart className="w-5 h-5 text-white cursor-pointer" /> */}
             <button
               className="text-white hover:bg-[#616161]  px-4 py-2 rounded"
               onClick={() => {
