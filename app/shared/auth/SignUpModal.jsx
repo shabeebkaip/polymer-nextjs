@@ -28,7 +28,6 @@ const SignUpModal = ({ signupModalVisible, setSignupModalVisible }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Data:", formData);
-    // Add your sign-up logic here
   };
 
   return (
