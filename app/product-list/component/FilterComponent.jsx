@@ -90,7 +90,7 @@ const FilterContent = ({ filters }) => {
         </div>
       </div>
 
-      <div className="pt-4 space-y-3 border-t">
+      <div className="pt-4 space-y-3 ">
         <h4 className="font-medium text-gray-700">Chemical Family</h4>
         <div className="space-y-2">
           {filters?.chemicalFamily?.map((family, index) => (
@@ -102,7 +102,7 @@ const FilterContent = ({ filters }) => {
         </div>
       </div>
 
-      <div className="pt-4 space-y-3 border-t">
+      <div className="pt-4 space-y-3 ">
         <h4 className="font-medium text-gray-700">Labeling Claims</h4>
         <div className="space-y-2">
           {["Kosher", "Allergen-free", "BSE-free", "Eco-friendly"].map((claim) => (
@@ -114,7 +114,7 @@ const FilterContent = ({ filters }) => {
         </div>
       </div>
 
-      <div className="pt-4 space-y-3 border-t">
+      <div className="pt-4 space-y-3 ">
         <h4 className="font-medium text-gray-700">Compatible With</h4>
         <div className="space-y-2">
           {["Paper", "Wood", "Textiles", "Plastics"].map((item) => (
@@ -126,7 +126,7 @@ const FilterContent = ({ filters }) => {
         </div>
       </div>
 
-      <div className="pt-4 border-t">
+      <div className="pt-4">
         <button className="text-sm font-medium text-[#e58110] hover:text-[#e58110]">Clear all filters</button>
       </div>
     </div>
