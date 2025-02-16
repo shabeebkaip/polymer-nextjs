@@ -32,6 +32,7 @@ const Page = () => {
     fetchProducts();
   }, []);
 
+  
   if (error) return <div>Error: {error}</div>;
 
   return (
