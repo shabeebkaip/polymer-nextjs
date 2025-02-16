@@ -2,12 +2,17 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { motion } from "framer-motion";
+import { Skeleton } from "@mui/material";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, loading }) => {
   const router = useRouter();
-  console.log(product, "product");
+
+  if (loading) {
+    return <SkeletonLoader />;
+  }
+
   return (
-    <div className="flex flex-col justify-between overflow-hidden bg-white rounded-lg shadow-md text-[13px] ">
+    <div className="flex flex-col justify-between overflow-hidden bg-white rounded-lg shadow-md text-[13px]">
       <div>
         <div>
           <Image
@@ -30,7 +35,7 @@ const ProductCard = ({ product }) => {
           </div>
           {product?.basic_details?.map((detail, index) => (
             <div key={index}>
-              <span className="font-semibold">{detail.title} :</span>
+              <span className="font-semibold">{detail.title}:</span>
               <span className="ml-1">{detail.value}</span>
             </div>
           ))}
@@ -83,6 +88,25 @@ const ProductCard = ({ product }) => {
         >
           View Product
         </motion.button>
+      </div>
+    </div>
+  );
+};
+
+// **🔹 Skeleton Loader Component**
+const SkeletonLoader = () => {
+  return (
+    <div className="p-4 bg-white rounded-lg shadow-md">
+      <Skeleton variant="rectangular" width="100%" height={160} />
+      <div className="p-3">
+        <Skeleton variant="text" width="80%" height={20} />
+        <Skeleton variant="text" width="60%" height={20} />
+        <Skeleton variant="text" width="50%" height={20} />
+        <Skeleton variant="text" width="90%" height={20} />
+        <Skeleton variant="text" width="70%" height={20} />
+      </div>
+      <div className="p-3 bg-gray-50">
+        <Skeleton variant="rectangular" width="100%" height={36} />
       </div>
     </div>
   );
